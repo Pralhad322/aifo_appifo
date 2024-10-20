@@ -14,13 +14,13 @@ if __name__ == '__main__':
     # Mean global flow completion time vs. utilization pFabric
     lambdas = [3600, 5200, 7000, 8900, 11100, 14150, 19000]
 
-    FCTs = [[0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0]]
+    FCTs = [[0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0]]
     row = 0
 
     for x in lambdas:
@@ -66,19 +66,28 @@ if __name__ == '__main__':
         for i, line in enumerate(lines):
             if "less_100KB_99th_fct_ms" in line:
                 FCTs[row][4]=line.split("=")[1].split("\n")[0]
+                break
+        r.close()
+
+        file = "temp/aifo/aifo_evaluation/pFabric/web_search_workload/"+str(x)+"/APPIFO/analysis/flow_completion.statistics"
+        r = open(file, 'r')
+        lines = r.readlines()
+        for i, line in enumerate(lines):
+            if "less_100KB_99th_fct_ms" in line:
+                FCTs[row][5]=line.split("=")[1].split("\n")[0]
                 break
         r.close()
         row = row + 1
 
     w = open('projects/aifo/plots/aifo_evaluation/pFabric/web_search_workload/pFabric_less_100KB_99th_fct_ms.dat', 'w')
-    w.write("#    TCP    DCTCP    PIFO    SPPIFO    AIFO\n")
-    w.write("3600   %s    %s    %s    %s    %s    \n" % (FCTs[0][0], FCTs[0][1], FCTs[0][2], FCTs[0][3], FCTs[0][4]))
-    w.write("5200   %s    %s    %s    %s    %s    \n" % (FCTs[1][0], FCTs[1][1], FCTs[1][2], FCTs[1][3], FCTs[1][4]))
-    w.write("7000   %s    %s    %s    %s    %s    \n" % (FCTs[2][0], FCTs[2][1], FCTs[2][2], FCTs[2][3], FCTs[2][4]))
-    w.write("8900   %s    %s    %s    %s    %s    \n" % (FCTs[3][0], FCTs[3][1], FCTs[3][2], FCTs[3][3], FCTs[3][4]))
-    w.write("11100   %s    %s    %s    %s    %s    \n" % (FCTs[4][0], FCTs[4][1], FCTs[4][2], FCTs[4][3], FCTs[4][4]))
-    w.write("14150   %s    %s    %s    %s    %s    \n" % (FCTs[5][0], FCTs[5][1], FCTs[5][2], FCTs[5][3], FCTs[5][4]))
-    w.write("19000   %s    %s    %s    %s    %s    \n" % (FCTs[6][0], FCTs[6][1], FCTs[6][2], FCTs[6][3], FCTs[6][4]))
+    w.write("#    TCP    DCTCP    PIFO    SPPIFO    AIFO    APPIFO\n")
+    w.write("3600   %s    %s    %s    %s    %s    %s    \n" % (FCTs[0][0], FCTs[0][1], FCTs[0][2], FCTs[0][3], FCTs[0][4], FCTs[0][5]))
+    w.write("5200   %s    %s    %s    %s    %s    %s    \n" % (FCTs[1][0], FCTs[1][1], FCTs[1][2], FCTs[1][3], FCTs[1][4], FCTs[1][5]))
+    w.write("7000   %s    %s    %s    %s    %s    %s    \n" % (FCTs[2][0], FCTs[2][1], FCTs[2][2], FCTs[2][3], FCTs[2][4], FCTs[2][5]))
+    w.write("8900   %s    %s    %s    %s    %s    %s    \n" % (FCTs[3][0], FCTs[3][1], FCTs[3][2], FCTs[3][3], FCTs[3][4], FCTs[3][5]))
+    w.write("11100   %s    %s    %s    %s    %s    %s    \n" % (FCTs[4][0], FCTs[4][1], FCTs[4][2], FCTs[4][3], FCTs[4][4], FCTs[4][5]))
+    w.write("14150   %s    %s    %s    %s    %s    %s    \n" % (FCTs[5][0], FCTs[5][1], FCTs[5][2], FCTs[5][3], FCTs[5][4], FCTs[5][5]))
+    w.write("19000   %s    %s    %s    %s    %s    %s    \n" % (FCTs[6][0], FCTs[6][1], FCTs[6][2], FCTs[6][3], FCTs[6][4], FCTs[6][5]))
     w.close()
 
 
@@ -87,13 +96,13 @@ if __name__ == '__main__':
     # Mean global flow completion time vs. utilization pFabric
     lambdas = [3600, 5200, 7000, 8900, 11100, 14150, 19000]
 
-    FCTs = [[0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0]]
+    FCTs = [[0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0]]
     row = 0
 
     for x in lambdas:
@@ -139,19 +148,28 @@ if __name__ == '__main__':
         for i, line in enumerate(lines):
             if "less_100KB_mean_fct_ms" in line:
                 FCTs[row][4]=line.split("=")[1].split("\n")[0]
+                break
+        r.close()
+
+        file = "temp/aifo/aifo_evaluation/pFabric/web_search_workload/"+str(x)+"/APPIFO/analysis/flow_completion.statistics"
+        r = open(file, 'r')
+        lines = r.readlines()
+        for i, line in enumerate(lines):
+            if "less_100KB_mean_fct_ms" in line:
+                FCTs[row][5]=line.split("=")[1].split("\n")[0]
                 break
         r.close()
         row = row + 1
 
     w = open('projects/aifo/plots/aifo_evaluation/pFabric/web_search_workload/pFabric_less_100KB_mean_fct_ms.dat', 'w')
-    w.write("#    TCP    DCTCP    PIFO    SPPIFO    AIFO\n")
-    w.write("3600   %s    %s    %s    %s    %s    \n" % (FCTs[0][0], FCTs[0][1], FCTs[0][2], FCTs[0][3], FCTs[0][4]))
-    w.write("5200   %s    %s    %s    %s    %s    \n" % (FCTs[1][0], FCTs[1][1], FCTs[1][2], FCTs[1][3], FCTs[1][4]))
-    w.write("7000   %s    %s    %s    %s    %s    \n" % (FCTs[2][0], FCTs[2][1], FCTs[2][2], FCTs[2][3], FCTs[2][4]))
-    w.write("8900   %s    %s    %s    %s    %s    \n" % (FCTs[3][0], FCTs[3][1], FCTs[3][2], FCTs[3][3], FCTs[3][4]))
-    w.write("11100   %s    %s    %s    %s    %s    \n" % (FCTs[4][0], FCTs[4][1], FCTs[4][2], FCTs[4][3], FCTs[4][4]))
-    w.write("14150   %s    %s    %s    %s    %s    \n" % (FCTs[5][0], FCTs[5][1], FCTs[5][2], FCTs[5][3], FCTs[5][4]))
-    w.write("19000   %s    %s    %s    %s    %s    \n" % (FCTs[6][0], FCTs[6][1], FCTs[6][2], FCTs[6][3], FCTs[6][4]))
+    w.write("#    TCP    DCTCP    PIFO    SPPIFO    AIFO    APPIFO\n")
+    w.write("3600   %s    %s    %s    %s    %s    %s    \n" % (FCTs[0][0], FCTs[0][1], FCTs[0][2], FCTs[0][3], FCTs[0][4], FCTs[0][5]))
+    w.write("5200   %s    %s    %s    %s    %s    %s    \n" % (FCTs[1][0], FCTs[1][1], FCTs[1][2], FCTs[1][3], FCTs[1][4], FCTs[1][5]))
+    w.write("7000   %s    %s    %s    %s    %s    %s    \n" % (FCTs[2][0], FCTs[2][1], FCTs[2][2], FCTs[2][3], FCTs[2][4], FCTs[2][5]))
+    w.write("8900   %s    %s    %s    %s    %s    %s    \n" % (FCTs[3][0], FCTs[3][1], FCTs[3][2], FCTs[3][3], FCTs[3][4], FCTs[3][5]))
+    w.write("11100   %s    %s    %s    %s    %s    %s    \n" % (FCTs[4][0], FCTs[4][1], FCTs[4][2], FCTs[4][3], FCTs[4][4], FCTs[4][5]))
+    w.write("14150   %s    %s    %s    %s    %s    %s    \n" % (FCTs[5][0], FCTs[5][1], FCTs[5][2], FCTs[5][3], FCTs[5][4], FCTs[5][5]))
+    w.write("19000   %s    %s    %s    %s    %s    %s    \n" % (FCTs[6][0], FCTs[6][1], FCTs[6][2], FCTs[6][3], FCTs[6][4], FCTs[6][5]))
     w.close()
 
 ########################################################################################################################
@@ -159,13 +177,13 @@ if __name__ == '__main__':
     # Mean global flow completion time vs. utilization pFabric
     lambdas = [3600, 5200, 7000, 8900, 11100, 14150, 19000]
 
-    FCTs = [[0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0],
-            [0,0,0,0,0]]
+    FCTs = [[0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0]]
     row = 0
 
     for x in lambdas:
@@ -213,15 +231,24 @@ if __name__ == '__main__':
                 FCTs[row][4]=line.split("=")[1].split("\n")[0]
                 break
         r.close()
+
+        file = "temp/aifo/aifo_evaluation/pFabric/web_search_workload/"+str(x)+"/APPIFO/analysis/flow_completion.statistics"
+        r = open(file, 'r')
+        lines = r.readlines()
+        for i, line in enumerate(lines):
+            if "geq_1MB_mean_fct_ms" in line:
+                FCTs[row][5]=line.split("=")[1].split("\n")[0]
+                break
+        r.close()
         row = row + 1
 
     w = open('projects/aifo/plots/aifo_evaluation/pFabric/web_search_workload/pFabric_geq_1MB_mean_fct_ms.dat', 'w')
-    w.write("#    TCP    DCTCP    PIFO    SPPIFO    AIFO\n")
-    w.write("3600   %s    %s    %s    %s    %s    \n" % (FCTs[0][0], FCTs[0][1], FCTs[0][2], FCTs[0][3], FCTs[0][4]))
-    w.write("5200   %s    %s    %s    %s    %s    \n" % (FCTs[1][0], FCTs[1][1], FCTs[1][2], FCTs[1][3], FCTs[1][4]))
-    w.write("7000   %s    %s    %s    %s    %s    \n" % (FCTs[2][0], FCTs[2][1], FCTs[2][2], FCTs[2][3], FCTs[2][4]))
-    w.write("8900   %s    %s    %s    %s    %s    \n" % (FCTs[3][0], FCTs[3][1], FCTs[3][2], FCTs[3][3], FCTs[3][4]))
-    w.write("11100   %s    %s    %s    %s    %s    \n" % (FCTs[4][0], FCTs[4][1], FCTs[4][2], FCTs[4][3], FCTs[4][4]))
-    w.write("14150   %s    %s    %s    %s    %s    \n" % (FCTs[5][0], FCTs[5][1], FCTs[5][2], FCTs[5][3], FCTs[5][4]))
-    w.write("19000   %s    %s    %s    %s    %s    \n" % (FCTs[6][0], FCTs[6][1], FCTs[6][2], FCTs[6][3], FCTs[6][4]))
+    w.write("#    TCP    DCTCP    PIFO    SPPIFO    AIFO    APPIFO\n")
+    w.write("3600   %s    %s    %s    %s    %s    %s    \n" % (FCTs[0][0], FCTs[0][1], FCTs[0][2], FCTs[0][3], FCTs[0][4], FCTs[0][5]))
+    w.write("5200   %s    %s    %s    %s    %s    %s    \n" % (FCTs[1][0], FCTs[1][1], FCTs[1][2], FCTs[1][3], FCTs[1][4], FCTs[1][5]))
+    w.write("7000   %s    %s    %s    %s    %s    %s    \n" % (FCTs[2][0], FCTs[2][1], FCTs[2][2], FCTs[2][3], FCTs[2][4], FCTs[2][5]))
+    w.write("8900   %s    %s    %s    %s    %s    %s    \n" % (FCTs[3][0], FCTs[3][1], FCTs[3][2], FCTs[3][3], FCTs[3][4], FCTs[3][5]))
+    w.write("11100   %s    %s    %s    %s    %s    %s    \n" % (FCTs[4][0], FCTs[4][1], FCTs[4][2], FCTs[4][3], FCTs[4][4], FCTs[4][5]))
+    w.write("14150   %s    %s    %s    %s    %s    %s    \n" % (FCTs[5][0], FCTs[5][1], FCTs[5][2], FCTs[5][3], FCTs[5][4], FCTs[5][5]))
+    w.write("19000   %s    %s    %s    %s    %s    %s    \n" % (FCTs[6][0], FCTs[6][1], FCTs[6][2], FCTs[6][3], FCTs[6][4], FCTs[6][5]))
     w.close()

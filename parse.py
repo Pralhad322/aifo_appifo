@@ -181,8 +181,11 @@ class SimulationResultParser:
                 marker='P', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
         plt.plot(idx, data.SPPIFO.to_numpy(), label='SP-PIFO', color=colors[3],
                 marker='^', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
+        plt.plot(idx, data.APPIFO.to_numpy(), label='APPIFO', color=colors[2],
+                marker='x', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
         plt.plot(idx, data.PIFO.to_numpy(), label='PIFO', color=colors[1],
                 marker='s', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
+        
 
         ax.set_xlim(0.2, 0.8)
         ax.set_xticks(([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]))
@@ -209,15 +212,17 @@ class SimulationResultParser:
         fct_toy = [0.35055623999999974, 0.37653438000000017, 0.3854711899999998, 0.3799701599999994, 0.38856209999999974, 0.3943339, 0.4087696200000002]
 
 
-        plt.plot(idx, data.TCP, label='TCP', color=colors[6],\
+        plt.plot(idx, data.TCP.to_numpy(), label='TCP', color=colors[6],\
                 marker='*', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
-        plt.plot(idx, data.DCTCP, label='DCTCP', color=colors[9],\
+        plt.plot(idx, data.DCTCP.to_numpy(), label='DCTCP', color=colors[9],\
                 marker='D', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
-        plt.plot(idx, data.AIFO, label='AIFO', color=colors[5],\
+        plt.plot(idx, data.AIFO.to_numpy(), label='AIFO', color=colors[5],\
                 marker='P', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
-        plt.plot(idx, data.SPPIFO, label='SP-PIFO', color=colors[3],\
+        plt.plot(idx, data.SPPIFO.to_numpy(), label='SP-PIFO', color=colors[3],\
                 marker='^', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
-        plt.plot(idx, data.PIFO, label='PIFO', color=colors[1],\
+        plt.plot(idx, data.APPIFO.to_numpy(), label='APPIFO', color=colors[2],\
+                marker='x', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
+        plt.plot(idx, data.PIFO.to_numpy(), label='PIFO', color=colors[1],\
                 marker='s', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
 
         ax.set_xlim(0.2, 0.8)
@@ -242,15 +247,17 @@ class SimulationResultParser:
 
         idx = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
 
-        plt.plot(idx, data.TCP, label='TCP', color=colors[6],\
+        plt.plot(idx, data.TCP.to_numpy(), label='TCP', color=colors[6],\
                 marker='*', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
-        plt.plot(idx, data.DCTCP, label='DCTCP', color=colors[9],\
+        plt.plot(idx, data.DCTCP.to_numpy(), label='DCTCP', color=colors[9],\
                 marker='D', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
-        plt.plot(idx, data.AIFO, label='AIFO', color=colors[5],\
+        plt.plot(idx, data.AIFO.to_numpy(), label='AIFO', color=colors[5],\
                 marker='P', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
-        plt.plot(idx, data.SPPIFO, label='SP-PIFO', color=colors[3],\
+        plt.plot(idx, data.SPPIFO.to_numpy(), label='SP-PIFO', color=colors[3],\
                 marker='^', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
-        plt.plot(idx, data.PIFO, label='PIFO', color=colors[1],\
+        plt.plot(idx, data.APPIFO.to_numpy(), label='APPIFO', color=colors[2],\
+                marker='x', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
+        plt.plot(idx, data.PIFO.to_numpy(), label='PIFO', color=colors[1],\
                 marker='s', markersize=6, lw=1, linestyle=linestyles[0], clip_on=False)
 
         ax.set_xlim(0.2, 0.8)
